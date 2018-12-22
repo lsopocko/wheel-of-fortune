@@ -25,9 +25,9 @@ export default class Screen extends Vue {
     }
 
     mounted(): void {
-        const renderCanvas = this.$refs.renderCanvas as HTMLCanvasElement;
-
-        this.gameInstance = new WheelOfFortune(renderCanvas);
+        this.gameInstance = new WheelOfFortune(<HTMLCanvasElement>(
+            this.$refs.renderCanvas
+        ));
     }
 
     start(): void {
