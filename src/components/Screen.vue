@@ -1,22 +1,39 @@
 <template>
     <div class="screen">
         <div class="screen__background">
-            <canvas class="screen__animation" ref="renderCanvas" width="500" height="500"></canvas>
+            <canvas
+                v-on:click="start"
+                class="screen__animation"
+                ref="renderCanvas"
+                width="500"
+                height="500"
+            ></canvas>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import Wheel from "@/modules/wheel/wheel";
-import * as PIXI from "pixi.js";
+import WheelOfFortune from "@/modules/wheelOfFortune/WheelOfFortune";
 
 @Component
 export default class Screen extends Vue {
+    private gameInstance?: WheelOfFortune;
+
+    constructor() {
+        super();
+    }
+
     mounted(): void {
         const renderCanvas = this.$refs.renderCanvas as HTMLCanvasElement;
 
-        const gameInstance = new Wheel(renderCanvas);
+        this.gameInstance = new WheelOfFortune(renderCanvas);
+    }
+
+    start(): void {
+        if (typeof this.gameInstance !== "undefined") {
+            this.gameInstance.start();
+        }
     }
 }
 </script>
