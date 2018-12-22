@@ -19,17 +19,13 @@ export default class WheelOfFortune extends PIXI.Application {
 
         super(w, h, {
             view: renderCanvas,
-            autoStart: false
+            autoStart: true
         });
 
         this.introScene = new IntroScene();
         this.broccoliScene = new BroccoliScene();
 
         this.currentScene = this.introScene;
-
-        setTimeout(() => {
-            this.switchScene(this.broccoliScene);
-        }, 5000);
 
         this.loadAssets();
         this.initalize();

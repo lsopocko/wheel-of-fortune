@@ -5,8 +5,8 @@
                 v-on:click="start"
                 class="screen__animation"
                 ref="renderCanvas"
-                width="500"
-                height="500"
+                width="1000"
+                height="1000"
             ></canvas>
         </div>
     </div>
@@ -43,7 +43,7 @@ export default class Screen extends Vue {
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -250px;
-    margin-left: -250px;
+    margin-top: -500px;
+    margin-left: -500px;
 }
 </style>

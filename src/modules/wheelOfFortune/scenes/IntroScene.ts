@@ -1,47 +1,36 @@
 import Scene from "./Scene";
-import Fries from "../entities/Fries";
-import Cake from "../entities/Cake";
-import Soda from "../entities/Soda";
-import Broccoli from "../entities/Broccoli";
-import Steak from "../entities/Steak";
 import FoodSymbol from "../entities/FoodSymbol";
+import Wheel from "../entities/Wheel";
 
 export default class IntroScene extends Scene {
-    private assets: FoodSymbol[] = [];
+    private assets: (FoodSymbol | Wheel | PIXI.Container)[] = [];
 
     public name: string = "IntroScene";
 
     public constructor() {
         super();
 
-        const fries = new Fries();
-        const cake = new Cake();
-        const soda = new Soda();
-        const broccoli = new Broccoli();
-        const steak = new Steak();
+        const wheelContainer = new PIXI.Container();
 
-        fries.x += fries.width;
-        fries.y += fries.height;
+        wheelContainer.name = "wheelContainer";
 
-        cake.x += cake.width + fries.x + 10;
-        cake.y += cake.height;
+        wheelContainer.addChild(
+            new Wheel(300),
+            new Wheel(340),
+            new Wheel(380),
+            new Wheel(420),
+            new Wheel(460)
+        );
 
-        soda.x += soda.width + cake.x + 10;
-        soda.y += soda.height;
+        wheelContainer.setTransform(500, 500, 0.5, 0.5, 0, 0, 0, 500, 500);
 
-        broccoli.x += broccoli.width + soda.x + 10;
-
-        broccoli.y += broccoli.height;
-
-        steak.x += steak.width + broccoli.x + 10;
-        steak.y += steak.height;
-
-        this.assets.push(fries, cake, soda, broccoli, steak);
+        this.assets.push(wheelContainer);
 
         this.addChild(...this.assets);
     }
 
     public update(delta: number): void {
         super.update(delta);
+        this.getChildByName("wheelContainer").rotation -= 0.005 * delta;
     }
 }

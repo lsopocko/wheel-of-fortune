@@ -18,6 +18,6 @@ export default class App extends Vue {}
 
 <style lang="scss">
 body {
-    background: #000;
+    background: #fff;
 }
 </style>
