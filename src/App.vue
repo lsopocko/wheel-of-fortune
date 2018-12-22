@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-        <Wheel/>
+        <Screen/>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Wheel from "./components/Wheel.vue";
+import Screen from "./components/Screen.vue";
 
 @Component({
     components: {
-        Wheel
+        Screen
     }
 })
 export default class App extends Vue {}
