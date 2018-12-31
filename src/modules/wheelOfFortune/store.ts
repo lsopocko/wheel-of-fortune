@@ -1,12 +1,16 @@
 const state = {
-    isSpinning: false
+    isSpinning: false,
+    isStarted: false
 };
 const mutations = {
     spin(state: any) {
         state.isSpinning = true;
     },
     stop(state: any) {
-        state.isSpinning = false;
+        state.isStarted = false;
+    },
+    start(state: any) {
+        state.isStarted = true;
     }
 };
 
@@ -16,6 +20,9 @@ const actions = {
     },
     stop(context: any) {
         context.commit("stop");
+    },
+    start(context: any) {
+        context.commit("start");
     }
 };
 

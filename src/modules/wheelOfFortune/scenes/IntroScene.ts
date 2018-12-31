@@ -7,7 +7,7 @@ import * as TWEEN from "@tweenjs/tween.js";
 
 export default class IntroScene extends Scene {
     private assets: (FoodSymbol | Wheel | PIXI.Container)[] = [];
-    private tween: Tween;
+    private tween: TWEEN.Tween;
     public name: string = "IntroScene";
 
     public constructor(store: any) {
@@ -30,18 +30,17 @@ export default class IntroScene extends Scene {
 
         this.tween
             .to({ rotation: 10.0 }, 6000)
-            .easing(TWEEN.Easing.Exponential.Out);
+            .easing(TWEEN.Easing.Quintic.InOut);
 
         wheelContainer.setTransform(500, 500, 0.5, 0.5, 0, 0, 0, 500, 500);
 
         this.assets.push(wheelContainer);
 
         this.addChild(...this.assets);
-
-        setTimeout(this.spin.bind(this), 5000);
     }
 
     public spin(): void {
+        this.tween.stop();
         this.tween.start();
     }
 
