@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 import Scene from "./scenes/Scene";
 import IntroScene from "./scenes/IntroScene";
 import BroccoliScene from "./scenes/BroccoliScene";
+import { Store } from "vuex";
 
 export default class WheelOfFortune extends PIXI.Application {
     private introScene: Scene;
@@ -13,17 +14,17 @@ export default class WheelOfFortune extends PIXI.Application {
      * Create wheel of fortune game instance
      * @param renderCanvas - Canvas element used to render the game.
      */
-    public constructor(renderCanvas: HTMLCanvasElement) {
-        const w = renderCanvas.offsetWidth;
-        const h = renderCanvas.offsetHeight;
-
-        super(w, h, {
+    public constructor(
+        renderCanvas: HTMLCanvasElement,
+        private store: Store<any>
+    ) {
+        super(renderCanvas.offsetWidth, renderCanvas.offsetHeight, {
             view: renderCanvas,
-            autoStart: true
+            autoStart: false
         });
 
-        this.introScene = new IntroScene();
-        this.broccoliScene = new BroccoliScene();
+        this.introScene = new IntroScene(this.store);
+        this.broccoliScene = new BroccoliScene(this.store);
 
         this.currentScene = this.introScene;
 

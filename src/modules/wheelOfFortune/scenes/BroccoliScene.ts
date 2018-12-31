@@ -4,8 +4,8 @@ import Broccoli from "../entities/Broccoli";
 export default class BroccoliScene extends Scene {
     public name: string = "BroccoliScene";
 
-    public constructor() {
-        super();
+    public constructor(store: any) {
+        super(store);
         const broccoli = new Broccoli();
 
         broccoli.x += broccoli.width;

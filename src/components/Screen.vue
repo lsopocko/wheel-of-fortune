@@ -8,6 +8,10 @@
                 width="1000"
                 height="1000"
             ></canvas>
+            
+            <button v-on:click="start">Start Game</button>
+            <button v-on:click="spin">Spin the wheel</button>
+            <button v-on:click="stop">Stop</button>
         </div>
     </div>
 </template>
@@ -25,15 +29,24 @@ export default class Screen extends Vue {
     }
 
     mounted(): void {
-        this.gameInstance = new WheelOfFortune(<HTMLCanvasElement>(
-            this.$refs.renderCanvas
-        ));
+        this.gameInstance = new WheelOfFortune(
+            <HTMLCanvasElement>this.$refs.renderCanvas,
+            this.$store
+        );
     }
 
     start(): void {
         if (typeof this.gameInstance !== "undefined") {
             this.gameInstance.start();
         }
+    }
+
+    spin(): void {
+        this.$store.dispatch("WheelOfFortuneStore/spin");
+    }
+
+    stop(): void {
+        this.$store.dispatch("WheelOfFortuneStore/stop");
     }
 }
 </script>
