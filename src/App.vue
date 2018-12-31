@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <GameView :is-started="isStarted"/>
+        <GameView :is-started="isStarted" :is-spinning="isSpinning"/>
         <UI/>
     </div>
 </template>
@@ -19,6 +19,9 @@ import UI from "./components/UI.vue";
 export default class App extends Vue {
     get isStarted() {
         return this.$store.state.WheelOfFortuneStore.isStarted;
+    }
+    get isSpinning() {
+        return this.$store.state.WheelOfFortuneStore.isSpinning;
     }
 }
 </script>

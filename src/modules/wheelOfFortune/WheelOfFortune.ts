@@ -7,7 +7,7 @@ import { Store } from "vuex";
 import * as TWEEN from "@tweenjs/tween.js";
 
 export default class WheelOfFortune extends PIXI.Application {
-    private introScene: Scene;
+    private introScene: IntroScene;
     private broccoliScene: Scene;
 
     private currentScene: Scene;
@@ -34,7 +34,17 @@ export default class WheelOfFortune extends PIXI.Application {
         this.initalize();
     }
 
-    public switchScene(newScene: Scene) {
+    public spin(): void {
+        this.switchScene(this.introScene);
+        this.introScene.spin();
+    }
+
+    public pause(): void {
+        this.introScene.stop();
+        this.switchScene(this.broccoliScene);
+    }
+
+    private switchScene(newScene: Scene) {
         this.stage.removeChild(this.currentScene);
         this.stage.addChild(newScene);
         this.currentScene = newScene;

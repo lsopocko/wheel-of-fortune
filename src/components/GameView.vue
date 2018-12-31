@@ -13,6 +13,8 @@ import WheelOfFortune from "@/modules/wheelOfFortune/WheelOfFortune";
 @Component
 export default class GameView extends Vue {
     @Prop() private isStarted!: boolean;
+    @Prop() private isSpinning!: boolean;
+
     private gameInstance?: WheelOfFortune;
 
     constructor() {
@@ -30,6 +32,17 @@ export default class GameView extends Vue {
     onStateChange() {
         if (this.isStarted && typeof this.gameInstance !== "undefined") {
             this.gameInstance.start();
+        }
+
+        if (!this.isStarted && typeof this.gameInstance !== "undefined") {
+            this.gameInstance.pause();
+        }
+    }
+
+    @Watch("isSpinning")
+    onSpinningChange() {
+        if (this.isSpinning && typeof this.gameInstance !== "undefined") {
+            this.gameInstance.spin();
         }
     }
 }

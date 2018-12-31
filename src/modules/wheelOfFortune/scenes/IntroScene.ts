@@ -44,6 +44,10 @@ export default class IntroScene extends Scene {
         this.tween.start();
     }
 
+    public stop(): void {
+        this.tween.stop();
+    }
+
     public update(delta: number): void {
         super.update(delta);
     }
