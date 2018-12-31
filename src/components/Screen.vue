@@ -43,6 +43,8 @@ export default class Screen extends Vue {
 
     spin(): void {
         this.$store.dispatch("WheelOfFortuneStore/spin");
+
+        setTimeout(() => this.stop(), 5000);
     }
 
     stop(): void {

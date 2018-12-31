@@ -4,6 +4,8 @@ import IntroScene from "./scenes/IntroScene";
 import BroccoliScene from "./scenes/BroccoliScene";
 import { Store } from "vuex";
 
+import * as TWEEN from "@tweenjs/tween.js";
+
 export default class WheelOfFortune extends PIXI.Application {
     private introScene: Scene;
     private broccoliScene: Scene;
@@ -44,6 +46,9 @@ export default class WheelOfFortune extends PIXI.Application {
 
     private initalize(): void {
         this.ticker.add(this.update.bind(this));
+        this.ticker.add((delta: number) => {
+            TWEEN.update();
+        });
     }
 
     private update(delta: number): void {
