@@ -1,18 +1,18 @@
 <template>
     <div id="app">
-        <Screen :is-started="isStarted"/>
+        <GameView :is-started="isStarted"/>
         <UI/>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Screen from "./components/Screen.vue";
+import GameView from "./components/GameView.vue";
 import UI from "./components/UI.vue";
 
 @Component({
     components: {
-        Screen,
+        GameView,
         UI
     }
 })

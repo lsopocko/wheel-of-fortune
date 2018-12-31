@@ -11,7 +11,7 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import WheelOfFortune from "@/modules/wheelOfFortune/WheelOfFortune";
 
 @Component
-export default class Screen extends Vue {
+export default class GameView extends Vue {
     @Prop() private isStarted!: boolean;
     private gameInstance?: WheelOfFortune;
 
