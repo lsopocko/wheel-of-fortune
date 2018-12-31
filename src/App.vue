@@ -29,5 +29,7 @@ export default class App extends Vue {
 <style lang="scss">
 body {
     background: #fff;
+    padding: 0;
+    margin: 0;
 }
 </style>

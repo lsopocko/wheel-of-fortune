@@ -10,6 +10,9 @@ export default class WheelOfFortune extends PIXI.Application {
     private introScene: IntroScene;
     private broccoliScene: Scene;
 
+    private static GAME_WIDTH = 1000;
+    private static GAME_HEIGHT = 1000;
+
     private currentScene: Scene;
 
     /**
@@ -22,13 +25,17 @@ export default class WheelOfFortune extends PIXI.Application {
     ) {
         super(renderCanvas.offsetWidth, renderCanvas.offsetHeight, {
             view: renderCanvas,
-            autoStart: false
+            autoStart: false,
+            resolution: window.devicePixelRatio,
+            autoResize: true
         });
 
         this.introScene = new IntroScene(this.store);
         this.broccoliScene = new BroccoliScene(this.store);
 
         this.currentScene = this.introScene;
+        this.resize();
+        window.addEventListener("resize", this.resize.bind(this));
 
         this.loadAssets();
         this.initalize();
@@ -44,14 +51,31 @@ export default class WheelOfFortune extends PIXI.Application {
         this.switchScene(this.broccoliScene);
     }
 
+    public loadAssets(): void {
+        this.stage.addChild(this.currentScene);
+    }
+
+    private resize(): void {
+        // Determine which screen dimension is most constrained
+        const ratio = Math.min(
+            window.innerWidth / WheelOfFortune.GAME_WIDTH,
+            window.innerHeight / WheelOfFortune.GAME_HEIGHT
+        );
+
+        // Scale the view appropriately to fill that dimension
+        this.stage.scale.x = this.stage.scale.y = ratio;
+
+        // Update the renderer dimensions
+        this.renderer.resize(
+            Math.ceil(WheelOfFortune.GAME_WIDTH * ratio),
+            Math.ceil(WheelOfFortune.GAME_HEIGHT * ratio)
+        );
+    }
+
     private switchScene(newScene: Scene) {
         this.stage.removeChild(this.currentScene);
         this.stage.addChild(newScene);
         this.currentScene = newScene;
-    }
-
-    public loadAssets(): void {
-        this.stage.addChild(this.currentScene);
     }
 
     private initalize(): void {
