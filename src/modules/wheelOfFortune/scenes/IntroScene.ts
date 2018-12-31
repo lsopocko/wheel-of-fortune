@@ -26,13 +26,35 @@ export default class IntroScene extends Scene {
             wheelFactory.createWheel(460)
         );
 
+        wheelContainer.setTransform(500, 500, 0.5, 0.5, 0, 0, 0, 500, 500);
+
         this.tween = new TWEEN.Tween(wheelContainer);
 
         this.tween
-            .to({ rotation: 10.0 }, 6000)
+            .to({ rotation: 11.0 }, 4000)
             .easing(TWEEN.Easing.Quintic.InOut);
 
-        wheelContainer.setTransform(500, 500, 0.5, 0.5, 0, 0, 0, 500, 500);
+        this.tween.chain(
+            new TWEEN.Tween({
+                x: wheelContainer.scale.x,
+                y: wheelContainer.scale.y,
+                posX: wheelContainer.position.x,
+                posY: wheelContainer.position.y
+            })
+                .to({ x: 3.0, y: 3.0, posX: 1600, posY: 500 }, 3000)
+                .easing(TWEEN.Easing.Exponential.Out)
+                .onUpdate(state => {
+                    wheelContainer.scale = {
+                        x: state.x,
+                        y: state.y
+                    } as PIXI.Point;
+
+                    wheelContainer.position = {
+                        x: state.posX,
+                        y: state.posY
+                    } as PIXI.Point;
+                })
+        );
 
         this.assets.push(wheelContainer);
 

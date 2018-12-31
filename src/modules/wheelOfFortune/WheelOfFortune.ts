@@ -56,12 +56,10 @@ export default class WheelOfFortune extends PIXI.Application {
 
     private initalize(): void {
         this.ticker.add(this.update.bind(this));
-        this.ticker.add((delta: number) => {
-            TWEEN.update();
-        });
     }
 
     private update(delta: number): void {
         this.currentScene.update(delta);
+        TWEEN.update();
     }
 }
