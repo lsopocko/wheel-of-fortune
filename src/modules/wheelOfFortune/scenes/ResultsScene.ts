@@ -1,3 +1,4 @@
+import { Store } from "vuex";
 import Scene from "./Scene";
 import FoodSymbol from "../entities/FoodSymbol";
 import Fries from "../entities/Fries";
@@ -13,7 +14,7 @@ export default class ResultsScene extends Scene {
     public name: string = "ResultsScene";
     private fadeInTween: TWEEN.Tween;
 
-    public constructor(store: any) {
+    public constructor(store: Store<{}>) {
         super(store);
         this.alpha = 0;
 
@@ -64,8 +65,8 @@ export default class ResultsScene extends Scene {
         super.update(delta);
     }
 
-    private addResultsRow(symbolsInRow: string[], row: number = 0): void {
-        const symbols = { Fries, Cake, Steak, Broccoli, Soda };
+    private addResultsRow(symbolsInRow: TFoodSymbol[], row: number = 0): void {
+        const symbols: FoodSymbolsList = { Fries, Cake, Steak, Broccoli, Soda };
 
         for (let i = 0; i < symbolsInRow.length; i++) {
             const symbol = new symbols[symbolsInRow[i]]() as FoodSymbol;

@@ -42,6 +42,7 @@ export default class App extends Vue {
 
     quit() {
         this.$store.dispatch("WheelOfFortuneStore/quit");
+        window.location.href = "https://www.casumo.com/";
     }
 
     get isStarted() {

@@ -9,6 +9,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import WheelOfFortune from "@/modules/wheelOfFortune/WheelOfFortune";
+import Store from "../store";
 
 @Component
 export default class GameView extends Vue {
@@ -34,10 +35,6 @@ export default class GameView extends Vue {
     onStateChange() {
         if (this.isStarted && typeof this.gameInstance !== "undefined") {
             this.gameInstance.start();
-        }
-
-        if (!this.isStarted && typeof this.gameInstance !== "undefined") {
-            this.gameInstance.pause();
         }
     }
 

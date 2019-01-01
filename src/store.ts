@@ -4,11 +4,13 @@ import WheelOfFortuneStore from "./modules/wheelOfFortune/store";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = {
     state: {},
     mutations: {},
     actions: {},
     modules: {
         WheelOfFortuneStore
     }
-});
+};
+
+export default new Vuex.Store<any>(store);

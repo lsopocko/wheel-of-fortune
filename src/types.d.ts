@@ -1,0 +1,3 @@
+type TRootState = {
+    WheelOfFortuneStore: WheelOfFortuneState;
+};
