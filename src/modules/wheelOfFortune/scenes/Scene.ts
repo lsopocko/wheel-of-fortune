@@ -5,5 +5,9 @@ export default class Scene extends PIXI.Container {
         super();
     }
 
+    public initialize(): void {}
+
+    public reset(): void {}
+
     public update(delta: number): void {}
 }

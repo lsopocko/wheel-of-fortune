@@ -1,7 +1,12 @@
 <template>
     <div id="app">
-        <GameView :is-started="isStarted" :is-spinning="isSpinning"/>
-        <UI/>
+        <GameView
+            :is-started="isStarted"
+            :is-spinning="isSpinning"
+            :is-showing-results="isShowingResults"
+            :results="results"
+        />
+        <UI v-bind="{ draw, start, quit, drawAgain }"/>
     </div>
 </template>
 
@@ -17,19 +22,56 @@ import UI from "./components/UI.vue";
     }
 })
 export default class App extends Vue {
+    public constructor() {
+        super();
+        this.$store.dispatch("WheelOfFortuneStore/setupSymbolsInReels");
+    }
+
+    draw() {
+        this.$store.dispatch("WheelOfFortuneStore/drawSymbols");
+    }
+
+    drawAgain() {
+        this.$store.dispatch("WheelOfFortuneStore/reset");
+        this.$store.dispatch("WheelOfFortuneStore/drawSymbols");
+    }
+
+    start() {
+        this.$store.dispatch("WheelOfFortuneStore/start");
+    }
+
+    quit() {
+        this.$store.dispatch("WheelOfFortuneStore/quit");
+    }
+
     get isStarted() {
         return this.$store.state.WheelOfFortuneStore.isStarted;
     }
+
     get isSpinning() {
         return this.$store.state.WheelOfFortuneStore.isSpinning;
+    }
+
+    get isShowingResults() {
+        return this.$store.state.WheelOfFortuneStore.isShowingResults;
+    }
+
+    get results() {
+        return this.$store.state.WheelOfFortuneStore.results;
     }
 }
 </script>
 
 <style lang="scss">
 body {
-    background: #fff;
+    background: #000;
     padding: 0;
     margin: 0;
+}
+
+#app {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
 }
 </style>

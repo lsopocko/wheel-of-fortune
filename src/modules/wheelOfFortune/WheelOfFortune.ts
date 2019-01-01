@@ -5,10 +5,12 @@ import BroccoliScene from "./scenes/BroccoliScene";
 import { Store } from "vuex";
 
 import * as TWEEN from "@tweenjs/tween.js";
+import ResultsScene from "./scenes/ResultsScene";
 
 export default class WheelOfFortune extends PIXI.Application {
     private introScene: IntroScene;
     private broccoliScene: Scene;
+    private resultsScene: ResultsScene;
 
     private static GAME_WIDTH = 1000;
     private static GAME_HEIGHT = 1000;
@@ -23,7 +25,7 @@ export default class WheelOfFortune extends PIXI.Application {
         renderCanvas: HTMLCanvasElement,
         private store: Store<any>
     ) {
-        super(renderCanvas.offsetWidth, renderCanvas.offsetHeight, {
+        super(WheelOfFortune.GAME_WIDTH, WheelOfFortune.GAME_HEIGHT, {
             view: renderCanvas,
             autoStart: false,
             resolution: window.devicePixelRatio,
@@ -32,6 +34,7 @@ export default class WheelOfFortune extends PIXI.Application {
 
         this.introScene = new IntroScene(this.store);
         this.broccoliScene = new BroccoliScene(this.store);
+        this.resultsScene = new ResultsScene(this.store);
 
         this.currentScene = this.introScene;
         this.resize();
@@ -43,7 +46,10 @@ export default class WheelOfFortune extends PIXI.Application {
 
     public spin(): void {
         this.switchScene(this.introScene);
-        this.introScene.spin();
+    }
+
+    public showResults(): void {
+        this.switchScene(this.resultsScene);
     }
 
     public pause(): void {
@@ -67,15 +73,18 @@ export default class WheelOfFortune extends PIXI.Application {
 
         // Update the renderer dimensions
         this.renderer.resize(
-            Math.ceil(WheelOfFortune.GAME_WIDTH * ratio),
-            Math.ceil(WheelOfFortune.GAME_HEIGHT * ratio)
+            Math.ceil(WheelOfFortune.GAME_WIDTH * ratio) - 10,
+            Math.ceil(WheelOfFortune.GAME_HEIGHT * ratio) - 10
         );
     }
 
     private switchScene(newScene: Scene) {
+        const lastScene = this.currentScene;
         this.stage.removeChild(this.currentScene);
         this.stage.addChild(newScene);
         this.currentScene = newScene;
+        this.currentScene.initialize();
+        lastScene.reset();
     }
 
     private initalize(): void {

@@ -1,7 +1,7 @@
 <template>
     <div class="screen">
         <div class="screen__background">
-            <canvas class="screen__animation" ref="renderCanvas" width="1000" height="1000"></canvas>
+            <canvas class="screen__animation" ref="renderCanvas"></canvas>
         </div>
     </div>
 </template>
@@ -13,7 +13,9 @@ import WheelOfFortune from "@/modules/wheelOfFortune/WheelOfFortune";
 @Component
 export default class GameView extends Vue {
     @Prop() private isStarted!: boolean;
+    @Prop() private isShowingResults!: boolean;
     @Prop() private isSpinning!: boolean;
+    @Prop() private results!: number[];
 
     private gameInstance?: WheelOfFortune;
 
@@ -39,9 +41,16 @@ export default class GameView extends Vue {
         }
     }
 
-    @Watch("isSpinning")
-    onSpinningChange() {
-        if (this.isSpinning && typeof this.gameInstance !== "undefined") {
+    @Watch("isShowingResults")
+    onResultsChange() {
+        if (this.isShowingResults && typeof this.gameInstance !== "undefined") {
+            this.gameInstance.showResults();
+        }
+    }
+
+    @Watch("results")
+    onResultsChange2() {
+        if (typeof this.gameInstance !== "undefined") {
             this.gameInstance.spin();
         }
     }
@@ -49,4 +58,7 @@ export default class GameView extends Vue {
 </script>
 
 <style lang="scss">
+.screen {
+    margin: auto;
+}
 </style>
