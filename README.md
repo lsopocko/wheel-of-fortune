@@ -1,4 +1,4 @@
-# wheel-of-fortune
+# Casumo test game - Wheel of fortune
 
 ## About
 
@@ -17,10 +17,10 @@ I decided to use this task as opportunity for little experiment. I wanted to see
 
 ## Future
 
-Well, you cannot win or lose. My idea for those were:
+Well, you cannot win or lose. My ideas for those were:
 
-1. You win when draw balanced, healthy meal.
-2. You loose when you stuff yourself with cake and soda.
+1. You _win_ when draw balanced, healthy meal.
+2. You _loose_ when you stuff yourself with cake and soda.
 
 If I have time to revisit this project, I will add those scenerios for sure.
 
