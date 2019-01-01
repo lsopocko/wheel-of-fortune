@@ -23,7 +23,7 @@ export default class WheelOfFortune extends PIXI.Application {
      */
     public constructor(
         renderCanvas: HTMLCanvasElement,
-        private store: Store<TRootState>
+        private store: Store<{}>
     ) {
         super(WheelOfFortune.GAME_WIDTH, WheelOfFortune.GAME_HEIGHT, {
             view: renderCanvas,
@@ -95,6 +95,7 @@ export default class WheelOfFortune extends PIXI.Application {
 
     private update(delta: number): void {
         this.currentScene.update(delta);
+        // @todo find out whats wrong with delta and why it doesnt work when passing it to TWEEN
         TWEEN.update();
     }
 }
