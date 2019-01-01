@@ -9,7 +9,6 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import WheelOfFortune from "@/modules/wheelOfFortune/WheelOfFortune";
-import Store from "../store";
 
 @Component
 export default class GameView extends Vue {

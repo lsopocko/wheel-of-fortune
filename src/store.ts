@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import WheelOfFortuneStore from "./modules/wheelOfFortune/store";
+import WheelOfFortuneStore from "./modules/wheelOfFortune";
 
 Vue.use(Vuex);
 

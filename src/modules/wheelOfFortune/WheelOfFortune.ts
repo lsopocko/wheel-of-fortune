@@ -18,11 +18,12 @@ export default class WheelOfFortune extends PIXI.Application {
 
     /**
      * Create wheel of fortune game instance
-     * @param renderCanvas - Canvas element used to render the game.
-     * @param store - Canvas element used to render the game.
+     * @param renderCanvas - canvas element used to render the game.
+     * @param store - state management
      */
     public constructor(
         renderCanvas: HTMLCanvasElement,
+        // @todo this should typed better
         private store: Store<{}>
     ) {
         super(WheelOfFortune.GAME_WIDTH, WheelOfFortune.GAME_HEIGHT, {
@@ -40,7 +41,6 @@ export default class WheelOfFortune extends PIXI.Application {
         window.addEventListener("resize", this.resize.bind(this));
 
         this.loadAssets();
-        this.initalize();
     }
 
     public spin(): void {
