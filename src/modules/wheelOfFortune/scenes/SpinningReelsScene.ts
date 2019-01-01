@@ -111,6 +111,7 @@ export default class SpinningReelsScene extends Scene {
                 } as PIXI.Point;
             })
             .onComplete(() => {
+                // @TODO shouldnt call store, scene should trigger its own event when its done
                 this.store.dispatch("WheelOfFortuneStore/showResults");
             })
             .start();

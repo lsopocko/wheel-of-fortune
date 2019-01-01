@@ -11,6 +11,13 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
     reset(context: ActionContext<WheelOfFortuneState, {}>) {
         context.commit("RESET");
     },
+
+    /**
+     * Puts symbols into arrays representing reels.
+     * @param  {ActionContext<WheelOfFortuneState, {}>} context
+     *
+     * @note This is just for demo purpose, normaly it would be downloaded from backend.
+     */
     setupSymbolsInReels(context: ActionContext<WheelOfFortuneState, {}>) {
         const symbols: TFoodSymbol[] = [
             "Fries",
@@ -39,6 +46,13 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
 
         context.commit("UPDATE_REELS", reels);
     },
+
+    /**
+     * Picks random number of steps per reel.
+     * @param  {ActionContext<WheelOfFortuneState, {}>} context
+     *
+     * @note This is just for demo purpose, normaly it would be downloaded from backend.
+     */
     drawSymbols(context: ActionContext<WheelOfFortuneState, {}>) {
         const getRandomInt = (min: number, max: number): number => {
             min = Math.ceil(min);
