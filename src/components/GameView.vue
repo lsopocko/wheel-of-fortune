@@ -31,21 +31,21 @@ export default class GameView extends Vue {
     }
 
     @Watch("isStarted")
-    onStateChange() {
+    onIsStartedChange() {
         if (this.isStarted && typeof this.gameInstance !== "undefined") {
             this.gameInstance.start();
         }
     }
 
     @Watch("isShowingResults")
-    onResultsChange() {
+    onIsShowingResultsChange() {
         if (this.isShowingResults && typeof this.gameInstance !== "undefined") {
             this.gameInstance.showResults();
         }
     }
 
     @Watch("results")
-    onResultsChange2() {
+    onResultsChange() {
         if (typeof this.gameInstance !== "undefined") {
             this.gameInstance.spin();
         }
