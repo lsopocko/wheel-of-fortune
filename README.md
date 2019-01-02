@@ -18,7 +18,7 @@ It's easy to overdo such engaging task, so I've put 12 hours time limit for that
 4. It is responsive, but it definitely requires some love.
 5. I used TypeScript because it rocks and I wanted to check how well PixiJS supports it (it does quite well, until you play around with plugins).
 6. Time limit I've put on myself is not enough to provide tests or use TDD approach :(
-7. I've made few shortcuts in code - if you find yourself with o_O look on your face, there is @todo somewhere around probably - when I'm at work I usually link JIRA task in places like that to be sure we wont miss it.
+7. I've made few shortcuts in code - if you find yourself with o_O look on your face, there is todo comment somewhere around probably - when I'm at work I usually link JIRA task in places like that to be sure we wont miss it.
 8. Didn't add background to reels, imho, they look nice without.
 
 ## Future
