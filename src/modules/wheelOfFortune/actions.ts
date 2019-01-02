@@ -17,7 +17,7 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
      * Puts symbols into arrays representing reels.
      * @param  {ActionContext<WheelOfFortuneState, {}>} context
      *
-     * @note This is just for demo purpose, normaly it would be downloaded from backend.
+     * @note This is just for demo purpose, normaly backend would randomize symbol positions in reels.
      */
     setupSymbolsInReels(context: ActionContext<WheelOfFortuneState, {}>): void {
         const symbols: TFoodSymbol[] = [
@@ -30,7 +30,7 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
 
         let reels = [];
 
-        // @TODO should take it from config
+        // @todo it should take number of symbols to put in reel from config
 
         for (let reelIndex = 0; reelIndex < config.reels; reelIndex++) {
             reels.push([
