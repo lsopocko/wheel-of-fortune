@@ -60,6 +60,7 @@ export default class WheelOfFortune extends PIXI.Application {
             .add("./assets/symbols/soda.png")
             .add("./assets/symbols/steak.png")
             .add("./assets/symbols/broccoli.png")
+            .add("./assets/marker.png")
             .load(this.initalize.bind(this));
     }
 

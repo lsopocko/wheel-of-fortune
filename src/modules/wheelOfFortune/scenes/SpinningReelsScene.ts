@@ -7,10 +7,10 @@ import * as TWEEN from "@tweenjs/tween.js";
 import config from "../config";
 
 export default class SpinningReelsScene extends Scene {
+    public name: string = "SpinningReelsScene";
     private assets: (FoodSymbol | Reel | PIXI.Container)[] = [];
     private spinnedWheels: number = 0;
     private reels: Reel[] = [];
-    public name: string = "SpinningReelsScene";
 
     public constructor(store: any) {
         super(store);
@@ -23,9 +23,18 @@ export default class SpinningReelsScene extends Scene {
 
         this.assets.push(reelsContainer);
 
+        // @todo it deserves separate entity
+        const marker = PIXI.Sprite.from("assets/marker.png");
+
+        marker.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+
+        // @todo it shouldn't require scaling or magic number in possition
+        marker.setTransform(3, 380, 0.78, 0.78, 0, 0, 0, 0, 0);
+
         this.addChild(...this.assets);
 
         this.setupReels();
+        reelsContainer.addChild(marker);
     }
 
     public initialize(): void {
@@ -41,10 +50,14 @@ export default class SpinningReelsScene extends Scene {
         reelsContainer.position.set(500, 500);
     }
 
+    public update(delta: number): void {
+        super.update(delta);
+    }
+
     /**
      * @param  {number} steps - one step equals rotation by one symbol
      */
-    public spin(steps: number[]): void {
+    private spin(steps: number[]): void {
         let stepIndex = 0;
 
         for (const reel of this.reels) {
@@ -58,10 +71,6 @@ export default class SpinningReelsScene extends Scene {
 
             stepIndex++;
         }
-    }
-
-    public update(delta: number): void {
-        super.update(delta);
     }
 
     private setupReels(): void {
@@ -83,13 +92,13 @@ export default class SpinningReelsScene extends Scene {
         reelsContainer.addChild(...this.reels);
     }
 
-    private checkIfFinishedSpinning() {
+    private checkIfFinishedSpinning(): void {
         if (this.spinnedWheels == this.reels.length) {
             this.zoomIn();
         }
     }
 
-    private zoomIn() {
+    private zoomIn(): void {
         const reelsContainer = this.getChildByName("reelsContainer");
         const zoomInTween = new TWEEN.Tween({
             x: reelsContainer.scale.x,

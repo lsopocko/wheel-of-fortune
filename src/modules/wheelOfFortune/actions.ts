@@ -1,14 +1,15 @@
 import config from "./config";
 import { ActionTree, ActionContext } from "vuex";
+import { getRandomInt } from "./helpers";
 
 export const actions: ActionTree<WheelOfFortuneState, {}> = {
-    start(context: ActionContext<WheelOfFortuneState, {}>) {
+    start(context: ActionContext<WheelOfFortuneState, {}>): void {
         context.commit("START");
     },
-    showResults(context: ActionContext<WheelOfFortuneState, {}>) {
+    showResults(context: ActionContext<WheelOfFortuneState, {}>): void {
         context.commit("SHOW_RESULTS");
     },
-    reset(context: ActionContext<WheelOfFortuneState, {}>) {
+    reset(context: ActionContext<WheelOfFortuneState, {}>): void {
         context.commit("RESET");
     },
 
@@ -18,7 +19,7 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
      *
      * @note This is just for demo purpose, normaly it would be downloaded from backend.
      */
-    setupSymbolsInReels(context: ActionContext<WheelOfFortuneState, {}>) {
+    setupSymbolsInReels(context: ActionContext<WheelOfFortuneState, {}>): void {
         const symbols: TFoodSymbol[] = [
             "Fries",
             "Cake",
@@ -53,23 +54,18 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
      *
      * @note This is just for demo purpose, normaly it would be downloaded from backend.
      */
-    drawSymbols(context: ActionContext<WheelOfFortuneState, {}>) {
-        const getRandomInt = (min: number, max: number): number => {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        };
+    drawSymbols(context: ActionContext<WheelOfFortuneState, {}>): void {
+        const baseStepsCount = getRandomInt(config.stepsMin, config.stepsMax);
 
-        const base = getRandomInt(56, 321);
-
-        const results = [
-            base + getRandomInt(0, config.symbolsPerReel),
-            base + getRandomInt(0, config.symbolsPerReel),
-            base + getRandomInt(0, config.symbolsPerReel),
-            base + getRandomInt(0, config.symbolsPerReel),
-            base + getRandomInt(0, config.symbolsPerReel)
+        const stepsPerReel = [
+            baseStepsCount + getRandomInt(0, config.symbolsPerReel),
+            baseStepsCount + getRandomInt(0, config.symbolsPerReel),
+            baseStepsCount + getRandomInt(0, config.symbolsPerReel),
+            baseStepsCount + getRandomInt(0, config.symbolsPerReel),
+            baseStepsCount + getRandomInt(0, config.symbolsPerReel)
         ];
-        context.commit("UPDATE_RESULTS", results);
+
+        context.commit("UPDATE_RESULTS", stepsPerReel);
         context.commit("INCREMENT_TRIES");
         context.commit("SPIN");
     }

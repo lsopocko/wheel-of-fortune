@@ -1,9 +1,9 @@
-import { mapResultToSymbolIndex, getSymbolFromReel } from "./helpers";
+import { mapStepsToSymbolIndex, getSymbolFromReel } from "./helpers";
 import config from "./config";
 import { GetterTree } from "vuex";
 
 export const getters: GetterTree<WheelOfFortuneState, {}> = {
-    drawedSymbols(state: WheelOfFortuneState) {
+    drawedSymbols(state: WheelOfFortuneState): any[] {
         const grid = [];
         let offset = -1;
 
@@ -13,9 +13,7 @@ export const getters: GetterTree<WheelOfFortuneState, {}> = {
                 symbols.push(
                     getSymbolFromReel(
                         state.reels[reelIndex],
-                        mapResultToSymbolIndex(
-                            state.results[reelIndex] + offset
-                        )
+                        mapStepsToSymbolIndex(state.results[reelIndex] + offset)
                     )
                 );
             }

@@ -10,8 +10,8 @@ import * as PIXI from "pixi.js";
 import * as TWEEN from "@tweenjs/tween.js";
 
 export default class ResultsScene extends Scene {
-    private resultsContainer: PIXI.Container;
     public name: string = "ResultsScene";
+    private resultsContainer: PIXI.Container;
     private fadeInTween: TWEEN.Tween;
 
     public constructor(store: Store<{}>) {
@@ -42,12 +42,16 @@ export default class ResultsScene extends Scene {
         this.fadeIn();
     }
 
+    public update(delta: number): void {
+        super.update(delta);
+    }
+
     public reset(): void {
         super.reset();
         this.resultsContainer.removeChildren();
     }
 
-    public updateResult(): void {
+    private updateResult(): void {
         const drawedSymbols = this.store.getters[
             "WheelOfFortuneStore/drawedSymbols"
         ];
@@ -57,12 +61,8 @@ export default class ResultsScene extends Scene {
         this.addResultsRow(drawedSymbols[2], 2);
     }
 
-    public fadeIn(): void {
+    private fadeIn(): void {
         this.fadeInTween.start();
-    }
-
-    public update(delta: number): void {
-        super.update(delta);
     }
 
     private addResultsRow(symbolsInRow: TFoodSymbol[], row: number = 0): void {

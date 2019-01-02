@@ -21,18 +21,19 @@ export default class Reel extends PIXI.Container {
     }
 
     public spin(steps: number): Promise<any> {
-        return new Promise((resolve, reject) => {
+        return new Promise(resolve => {
             this.spinningTween
-                .to(
-                    { rotation: ((Math.PI * 2) / this.symbols.length) * steps },
-                    steps * 50
-                )
+                .to({ rotation: this.mapStepsToRadians(steps) }, steps * 50)
                 .easing(TWEEN.Easing.Quintic.Out)
                 .onComplete(() => {
                     resolve();
                 })
                 .start();
         });
+    }
+
+    private mapStepsToRadians(steps: number): number {
+        return ((Math.PI * 2) / this.symbols.length) * steps;
     }
 
     private setupSymbols(): void {
