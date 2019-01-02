@@ -1,9 +1,5 @@
 <template>
-    <div class="screen">
-        <div class="screen__background">
-            <canvas class="screen__animation" ref="renderCanvas"></canvas>
-        </div>
-    </div>
+    <canvas ref="renderCanvas"></canvas>
 </template>
 
 <script lang="ts">
@@ -52,9 +48,3 @@ export default class GameView extends Vue {
     }
 }
 </script>
-
-<style lang="scss">
-.screen {
-    margin: auto;
-}
-</style>
