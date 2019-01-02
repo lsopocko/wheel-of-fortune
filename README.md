@@ -1,6 +1,6 @@
 # Casumo test game - Wheel of fortune
 
-[Online demo](https://lsopocko.github.io/)
+## [Online demo](https://lsopocko.github.io/)
 
 ## About
 
