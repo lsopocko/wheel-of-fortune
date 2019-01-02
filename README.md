@@ -1,5 +1,7 @@
 # Casumo test game - Wheel of fortune
 
+[Online demo](https://lsopocko.github.io/)
+
 ## About
 
 I decided to use this task as opportunity for little experiment. I wanted to see how it will work when I mix Vue.js with PixiJS. I was using Vue.js for UI and interactions, and PixiJS as a renderer for animations and all fancier graphic. Apart from looking what's what in PixiJs I didn't have any experience with it before.
