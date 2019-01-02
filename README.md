@@ -32,7 +32,7 @@ If I have time to revisit this project, I will add those scenarios for sure. Apa
 
 1. Whole _game_ is in [src/modules/wheelOfFortune](https://bitbucket.org/lukasz-sopocko/casumo-test/src/master/src/modules/wheelOfFortune/).
 2. Because I'm using Vuex store to manage state, you can use Vue devtools Chrome extension to help yourself with debugging.
-3. Number of Reels and Symbols per reel is configurable (see [src/modules/wheelOfFortune/config.ts](https://bitbucket.org/lukasz-sopocko/casumo-test/src/master/src/modules/wheelOfFortune/Config.ts)).
+3. Number of Reels and Symbols per reel is configurable (see [src/modules/wheelOfFortune/config.ts](https://bitbucket.org/lukasz-sopocko/casumo-test/src/master/src/modules/wheelOfFortune/config.ts)).
 4. Mapping number of steps by which we rotated each reel (one step == rotation one symbol) to symbol (see [src/modules/wheelOfFortune/getters.ts](https://bitbucket.org/lukasz-sopocko/casumo-test/src/master/src/modules/wheelOfFortune/getters.ts)).
 5. Extending PIXI classes into entities/scenes (see [src/modules/wheelOfFortune/entities](https://bitbucket.org/lukasz-sopocko/casumo-test/src/master/src/modules/wheelOfFortune/entities) and [src/modules/wheelOfFortune/scenes](https://bitbucket.org/lukasz-sopocko/casumo-test/src/master/src/modules/wheelOfFortune/scenes)) thanks to ES6 features of TypeScript.
 
