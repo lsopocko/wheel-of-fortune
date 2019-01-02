@@ -1,3 +1,3 @@
 type TRootState = {
-    WheelOfFortuneStore: WheelOfFortuneState;
+    wheelOfFortuneStore: WheelOfFortuneState;
 };

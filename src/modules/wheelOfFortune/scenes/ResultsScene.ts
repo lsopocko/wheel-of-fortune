@@ -53,7 +53,7 @@ export default class ResultsScene extends Scene {
 
     private updateResult(): void {
         const drawedSymbols = this.store.getters[
-            "WheelOfFortuneStore/drawedSymbols"
+            "wheelOfFortuneStore/drawedSymbols"
         ];
 
         this.addResultsRow(drawedSymbols[0], 0);

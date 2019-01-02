@@ -26,13 +26,13 @@ export default class UI extends Vue {
     }
 
     get isStarted() {
-        return this.$store.state.WheelOfFortuneStore.isStarted;
+        return this.$store.state.wheelOfFortuneStore.isStarted;
     }
     get isSpinning() {
-        return this.$store.state.WheelOfFortuneStore.isSpinning;
+        return this.$store.state.wheelOfFortuneStore.isSpinning;
     }
     get isFirstTry() {
-        return this.$store.state.WheelOfFortuneStore.tries == 0;
+        return this.$store.state.wheelOfFortuneStore.tries == 0;
     }
 }
 </script>

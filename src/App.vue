@@ -24,41 +24,41 @@ import UI from "./components/UI.vue";
 export default class App extends Vue {
     public constructor() {
         super();
-        this.$store.dispatch("WheelOfFortuneStore/setupSymbolsInReels");
+        this.$store.dispatch("wheelOfFortuneStore/setupSymbolsInReels");
     }
 
     draw() {
-        this.$store.dispatch("WheelOfFortuneStore/drawSymbols");
+        this.$store.dispatch("wheelOfFortuneStore/drawSymbols");
     }
 
     drawAgain() {
-        this.$store.dispatch("WheelOfFortuneStore/reset");
-        this.$store.dispatch("WheelOfFortuneStore/drawSymbols");
+        this.$store.dispatch("wheelOfFortuneStore/reset");
+        this.$store.dispatch("wheelOfFortuneStore/drawSymbols");
     }
 
     start() {
-        this.$store.dispatch("WheelOfFortuneStore/start");
+        this.$store.dispatch("wheelOfFortuneStore/start");
     }
 
     quit() {
-        this.$store.dispatch("WheelOfFortuneStore/quit");
+        this.$store.dispatch("wheelOfFortuneStore/quit");
         window.location.href = "https://www.casumo.com/";
     }
 
     get isStarted() {
-        return this.$store.state.WheelOfFortuneStore.isStarted;
+        return this.$store.state.wheelOfFortuneStore.isStarted;
     }
 
     get isSpinning() {
-        return this.$store.state.WheelOfFortuneStore.isSpinning;
+        return this.$store.state.wheelOfFortuneStore.isSpinning;
     }
 
     get isShowingResults() {
-        return this.$store.state.WheelOfFortuneStore.isShowingResults;
+        return this.$store.state.wheelOfFortuneStore.isShowingResults;
     }
 
     get results() {
-        return this.$store.state.WheelOfFortuneStore.results;
+        return this.$store.state.wheelOfFortuneStore.results;
     }
 }
 </script>

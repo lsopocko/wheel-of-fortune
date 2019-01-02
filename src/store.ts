@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import WheelOfFortuneStore from "./modules/wheelOfFortune";
+import wheelOfFortuneStore from "./modules/wheelOfFortune";
 
 Vue.use(Vuex);
 
@@ -9,7 +9,7 @@ const store = {
     mutations: {},
     actions: {},
     modules: {
-        WheelOfFortuneStore
+        wheelOfFortuneStore
     }
 };
 

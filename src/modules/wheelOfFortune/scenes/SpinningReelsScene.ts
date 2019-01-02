@@ -39,7 +39,7 @@ export default class SpinningReelsScene extends Scene {
 
     public initialize(): void {
         super.initialize();
-        this.spin(this.store.state.WheelOfFortuneStore.results);
+        this.spin(this.store.state.wheelOfFortuneStore.results);
     }
 
     public reset(): void {
@@ -82,7 +82,7 @@ export default class SpinningReelsScene extends Scene {
                 ReelFactory.createReel(
                     `wheel${reelIndex + 1}`,
                     radius,
-                    this.store.state.WheelOfFortuneStore.reels[reelIndex]
+                    this.store.state.wheelOfFortuneStore.reels[reelIndex]
                 )
             );
 
@@ -121,7 +121,7 @@ export default class SpinningReelsScene extends Scene {
             })
             .onComplete(() => {
                 // @TODO shouldnt call store, scene should trigger its own event when its done
-                this.store.dispatch("WheelOfFortuneStore/showResults");
+                this.store.dispatch("wheelOfFortuneStore/showResults");
             })
             .start();
     }
