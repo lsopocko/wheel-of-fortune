@@ -21,4 +21,5 @@ const wheelOfFortuneModule: Module<WheelOfFortuneState, {}> = {
     getters
 };
 
+export { default as WheelOfFortune } from "./WheelOfFortune";
 export default wheelOfFortuneModule;
