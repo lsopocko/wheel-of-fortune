@@ -10,6 +10,7 @@ export default class WheelOfFortune extends PIXI.Application {
     private spinningReelsScene: SpinningReelsScene;
     private resultsScene: ResultsScene;
 
+    // @todo move it to config
     private static GAME_WIDTH = 1000;
     private static GAME_HEIGHT = 1000;
     private static PADDING = 10;
@@ -51,7 +52,7 @@ export default class WheelOfFortune extends PIXI.Application {
         this.switchScene(this.resultsScene);
     }
 
-    public loadAssets(): void {
+    private loadAssets(): void {
         const loader = PIXI.loader;
 
         loader
