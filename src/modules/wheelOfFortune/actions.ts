@@ -30,19 +30,21 @@ export const actions: ActionTree<WheelOfFortuneState, {}> = {
 
         let reels = [];
 
-        // @todo it should take number of symbols to put in reel from config
-
         for (let reelIndex = 0; reelIndex < config.reels; reelIndex++) {
-            reels.push([
-                ...symbols,
-                ...symbols,
-                ...symbols,
-                ...symbols,
-                ...symbols,
-                ...symbols,
-                ...symbols,
-                ...symbols
-            ]);
+            let symbolsForReel = [];
+            let symbolIndex = 0;
+
+            for (let i = 0; i < config.symbolsPerReel; i++) {
+                symbolsForReel.push(symbols[symbolIndex]);
+
+                if (symbolIndex < symbols.length - 1) {
+                    symbolIndex++;
+                } else {
+                    symbolIndex = 0;
+                }
+            }
+
+            reels.push(symbolsForReel);
         }
 
         context.commit("UPDATE_REELS", reels);
